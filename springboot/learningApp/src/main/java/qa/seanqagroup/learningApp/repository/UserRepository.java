@@ -7,4 +7,5 @@ import qa.seanqagroup.learningApp.model.User;
 
 public interface UserRepository extends JpaRepository<User,Long>{
 
+	public User findUserByEmail(String email);
 }
