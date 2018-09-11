@@ -19,9 +19,14 @@ public class UserCreationController {
 	
 	
 	
-	@GetMapping("/u/{id}")
+	@GetMapping("/u/id/{id}")
 	public User getUserById(@PathVariable(value="id") Long userID) {
 		User user = userRepo.findById(userID).orElseThrow(()-> new ResourceNotFoundException("USER", "ID", userID));
+		return user;
+	}
+	@GetMapping("/u/e/{e}")
+	public User getUserByEmail(@PathVariable(value="e") String email) {
+		User user = userRepo.findByEmail(email);//.orElseThrow(()-> new ResourceNotFoundException("USER", "ID", email));
 		return user;
 	}
 	

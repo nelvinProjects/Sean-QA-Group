@@ -25,6 +25,7 @@ public class User {
 	private E_UserType userType;
 	
 //	private Email email; //if this causes issues with database use string type instead
+	@NotEmpty
 	private String email;
 
 
