@@ -16,6 +16,12 @@ package qa.seanqagroup.learningApp.exceptions;
 			this.fieldName = fieldName;
 			this.fieldValue = fieldValue;
 		}
+
+		
+		
+		
+		
+		
 		
 	}
 

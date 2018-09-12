@@ -1,5 +1,7 @@
 package qa.seanqagroup.learningApp.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,7 +11,7 @@ import javax.validation.constraints.NotEmpty;
 import qa.seanqagroup.learningApp.model.enums.E_UserType;
 
 @Entity
-public class User {
+public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -29,8 +31,31 @@ public class User {
 	private String email;
 
 
-
 	
+	
+
+	public User() {
+	super();
+	this.userId = (long) 10;
+	this.firstName = "test";
+	this.lastName = "test";
+	this.password = "p";
+	this.userType = E_UserType.LEARNER;
+	this.email = "a@a.a";
+}
+
+
+	public User(@NotEmpty String firstName, @NotEmpty String lastName, String password, E_UserType userType,
+		@NotEmpty String email) {
+	super();
+//	this.userId = userId;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.password = password;
+	this.userType = userType;
+	this.email = email;
+}
+
 
 	public Long getUserId() {
 		return userId;
