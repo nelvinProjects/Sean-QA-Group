@@ -1,19 +1,8 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Questions from './Questions';
 
-class QuestionContainer extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
+const QuestionContainer = () => {
 
-    handleClick = ()=> {
-        return (
-        <input type="text" className="answer" placeholder="Answer..."/>
-        )
-    }
-
-    render() {
         return (
             <div id = "questions">
             <div id = "q1">
@@ -30,16 +19,11 @@ class QuestionContainer extends Component {
 <input type="text" className="answer" placeholder="Answer..."/>
 </span>
      </div>
+     
+     <Questions />
      </div>
-            // <div>
-            // <div className = "questions">
-            //     <Questions/>
-            // </div>
-            // <div>
-            //     <button type={'button'}  id="add-an-answer" onClick = {this.handleClick}> Add an incorrect answer </button>
-            // </div>
-            // </div>
+
         );
     }
-}
+
 export default QuestionContainer;
