@@ -12,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import qa.seanqagroup.learningApp.LearningAppApplication;
+import qa.seanqagroup.learningApp.controller.UserCreationController;
+import qa.seanqagroup.learningApp.exceptions.ResourceNotFoundException;
 import qa.seanqagroup.learningApp.model.User;
 import qa.seanqagroup.learningApp.model.enums.E_UserType;
 import qa.seanqagroup.learningApp.repository.UserRepository;
@@ -35,7 +37,8 @@ public class UserTestingTest {
 		entityManager.persist(testUser);
 		entityManager.flush();
 		assertTrue(userRepo.findById(testUser.getUserId()).isPresent());
-		
+		entityManager.clear();
+
 		
 				
 	}
@@ -47,6 +50,7 @@ public class UserTestingTest {
 		entityManager.persist(testUser2);
 		entityManager.flush();
 		assertTrue(userRepo.findById(testUser2.getUserId()).isPresent());
+		entityManager.clear();
 				
 	}
 	@Test
@@ -82,9 +86,20 @@ public class UserTestingTest {
 		assertEquals("Person Not Real",persistedUser.getUserType(),E_UserType.LEARNER);
 
 
-
-
-		
-			}
+}
+//		@Test
+//		public void testUserCreationController() {
+//			 UserCreationController ucc = new UserCreationController();
+//			 User testUser = new User();
+//			 entityManager.persist(testUser);
+//			 entityManager.flush();
+//			 
+//			 Long id = new Long(10);
+//			 User user1 = ucc.getUserById(id);
+//			 User user2 = userRepo.findById(id).orElseThrow(()->new ResourceNotFoundException("USER", "ID", id));
+//			 assertTrue(user1.getUserId().equals(user2.getUserId()));
+//			 
+//			
+//		}
 
 }
