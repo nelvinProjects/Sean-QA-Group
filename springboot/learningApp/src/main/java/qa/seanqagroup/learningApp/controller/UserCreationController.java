@@ -2,6 +2,7 @@ package qa.seanqagroup.learningApp.controller;
 
 import javax.validation.Valid;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,17 +39,28 @@ public class UserCreationController {
 	}
 	
 	@PostMapping("/login")
-	public void checkDetails(@Valid @RequestBody User user){
-	String check = "";
-	User repoUser = userRepo.findByEmail(user.getEmail());
-	if(user.getPassword().equals(repoUser.getPassword())) {
-			check = "passed";
+	public String checkDetails(User user){
+		JSONObject obj = new JSONObject();
+		for (User everyone : userRepo.findAll()) {
+			System.out.println(everyone.getEmail());
+			if(everyone.getEmail().equals(user.getEmail())) {
+				if(everyone.getPassword().equals(user.getPassword())){
+					obj.put("name",everyone.getFirstName());
+					obj.put("id", everyone.getUserId());
+					obj.put("type", everyone.getUserType());
+					System.out.println("PASS RETURN");
+					return obj.toString();
+				}
+			}
 		}
-	else {
-			check = "failed";
-		}
-	System.out.println(check);
-	}
+		System.out.println("FAIL RETURN");
+		obj.put("result", "fail");
+		return obj.toString();
+}
+	
+	
+	
+	
 	@PostMapping("/register")
 	public User registerUser(@Valid @RequestBody User user){
 	return userRepo.save(user);
