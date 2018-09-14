@@ -3,7 +3,8 @@ import React from "react";
 export default class AddModule extends React.Component {
     handleSubmit = (event) => {
         const data = new FormData(event.target);
-        data.append("courseId", "1");
+        //TODO get course ID
+        data.append("courseId", "15");
 
         fetch("http://localhost:8080/module/add", {
             method: 'POST',

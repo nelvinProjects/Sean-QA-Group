@@ -17,9 +17,6 @@ public class ModuleController {
 
 	@PostMapping("/module/add")
 	public void createModule(Module module) {
-		System.out.println(module.getModuleName());
-		System.out.println(module.getModuleDescription());
-		System.out.println(module.getCourseId());
 		moduleRepository.save(module);
 	}
 }

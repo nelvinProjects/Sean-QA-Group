@@ -21,14 +21,10 @@ public class Course {
 	private String courseDescription;
 	
 	@NotNull
-	private long trainerId;
+	private long madeByTrainerId;
 
 	public long getCourseId() {
 		return courseId;
-	}
-
-	public void setCourseId(long courseId) {
-		this.courseId = courseId;
 	}
 
 	public String getCourseName() {
@@ -48,10 +44,10 @@ public class Course {
 	}
 
 	public long getTrainerId() {
-		return trainerId;
+		return madeByTrainerId;
 	}
 
-	public void setTrainerId(long learnerId) {
-		this.trainerId = learnerId;
+	public void setTrainerId(long madeByTrainerId) {
+		this.madeByTrainerId = madeByTrainerId;
 	}
 }

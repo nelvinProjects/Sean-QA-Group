@@ -26,10 +26,6 @@ public class Section {
 		return sectionId;
 	}
 
-	public void setSectionId(long sectionId) {
-		this.sectionId = sectionId;
-	}
-
 	public String getSectionName() {
 		return sectionName;
 	}

@@ -3,6 +3,8 @@ package qa.seanqagroup.learningApp.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import qa.seanqagroup.learningApp.model.Course;
@@ -14,12 +16,10 @@ public class CourseController {
 
 	@Autowired
 	private CourseRepository courseRepository;
-	
+
 	@PostMapping("/course/add")
-	public void createCourse(Course course) {
-		System.out.println(course.getCourseName());
-		System.out.println(course.getCourseDescription());
-		System.out.println(course.getTrainerId());
+	public void createCourse(Course course, @RequestParam("madeByTrainerId") Long madeByTrainerId) {
+		course.setTrainerId(madeByTrainerId);
 		courseRepository.save(course);
 	}
 }

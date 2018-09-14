@@ -2,13 +2,13 @@ import React from "react";
 
 export default class AddCourse extends React.Component {
     handleSubmit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         if (event.target.courseName.value.length !== 0 &&
             event.target.courseDescription.value.length !== 0) {
             const data = new FormData(event.target);
-            data.append("trainerId", "1");
+            //TODO: change to trainer id
+            data.append("madeByTrainerId", 1);
 
-            console.log(event.target.courseName.value.length);
             fetch("http://localhost:8080/course/add", {
                 method: 'POST',
                 body: data
