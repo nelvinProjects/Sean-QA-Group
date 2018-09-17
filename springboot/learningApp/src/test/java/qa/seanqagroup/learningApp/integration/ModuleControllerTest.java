@@ -51,16 +51,18 @@ public class ModuleControllerTest {
 
 	@Test
 	public void addModuleTest() throws Exception {
-		test = extent.createTest("ModuleController add module");
+		test = extent.createTest("ModuleController add module POST");
 		try {
 			mvc.perform(MockMvcRequestBuilders.post("/module/add").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("moduleName", "Control Chi(Energy)")
 					.param("moduleDescription", "Think, breath, and control")
 					.param("courseId", "15"))
 					.andExpect(status().isOk());
-			test.pass("Added module to database");
+			test.pass("Added module: moduleName: Control Chi(Energy), moduleDescription: "
+					+ "Think, breath, and control, courseId: 15");
 		} catch (AssertionError e) {
-			test.fail("Didn't add module to database");
+			test.fail("Failed to add: moduleName: Control Chi(Energy), moduleDescription:"
+					+ "Think, breath, and control, courseId: 15");
 		}
 	}
 

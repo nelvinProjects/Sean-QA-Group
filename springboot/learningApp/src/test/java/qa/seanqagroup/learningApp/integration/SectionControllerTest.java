@@ -50,14 +50,14 @@ public class SectionControllerTest {
 
 	@Test
 	public void addSectionTest() throws Exception {
-		ExtentTest test = extent.createTest("SectionController add section");
+		ExtentTest test = extent.createTest("SectionController add section POST");
 		try {
 			mvc.perform(MockMvcRequestBuilders.post("/section/add").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("sectionName", "Energy").param("sectionContent", "Think").param("moduleId", "3"))
 					.andExpect(status().isOk());
-			test.pass("Added section to database");
+			test.pass("Added section: sectionName: Energy, sectionContent: Think, moduleId: 3");
 		} catch (AssertionError e) {
-			test.fail("Didn't add module to database");
+			test.fail("Failed to add section: sectionName: Energy, sectionContent: Think, moduleId: 3");
 		}
 	}
 

@@ -50,15 +50,17 @@ public class CourseControllerTest {
 
 	@Test
 	public void addCourseTest() throws Exception {
-		test = extent.createTest("CourseController add course");
+		test = extent.createTest("CourseController add course POST");
 		try {
 			mvc.perform(MockMvcRequestBuilders.post("/course/add").contentType(MediaType.APPLICATION_FORM_URLENCODED)
 					.param("courseName", "Learn to control your inner Chi")
 					.param("courseDescription", "We teach you to control chi").param("madeByTrainerId", "1"))
 					.andExpect(status().isOk());
-			test.pass("Added course to database");
+			test.pass("Added courseName: Learn to control your inner Chi, courseDescription:"
+					+ "We teach you to control chi, madeByTrainerId: 1");
 		} catch (AssertionError e) {
-			test.fail("Didn't add course to database");
+			test.fail("Failed to add: courseName: Learn to control your inner Chi, courseDescription:" + 
+					"We teach you to control chi, madeByTrainerId: 1");
 		}
 	}
 }
